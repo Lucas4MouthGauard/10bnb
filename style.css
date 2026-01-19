@@ -31,6 +31,41 @@ body::before {
     z-index: 1000;
 }
 
+/* 右上角更新提示框 */
+.update-notice {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 2000;
+    animation: float 3s ease-in-out infinite;
+}
+
+.notice-content {
+    background: #FFF;
+    border: 5px solid #000;
+    padding: 15px 20px;
+    box-shadow: 
+        6px 6px 0px #FF6B00,
+        12px 12px 0px rgba(0,0,0,0.3);
+    transform: rotate(2deg);
+    max-width: 280px;
+}
+
+.notice-title {
+    font-size: 0.7rem;
+    color: #FF0000;
+    text-shadow: 2px 2px 0px #000;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.notice-text {
+    font-size: 0.6rem;
+    color: #000;
+    text-shadow: 1px 1px 0px #FF6B00;
+    line-height: 1.6;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -486,6 +521,25 @@ body::before {
         font-size: 0.6rem;
         padding: 10px 12px;
         letter-spacing: 0.3px;
+    }
+    
+    .update-notice {
+        top: 10px;
+        right: 10px;
+        max-width: 200px;
+    }
+    
+    .notice-content {
+        padding: 12px 15px;
+        max-width: 100%;
+    }
+    
+    .notice-title {
+        font-size: 0.6rem;
+    }
+    
+    .notice-text {
+        font-size: 0.5rem;
     }
 }
 
