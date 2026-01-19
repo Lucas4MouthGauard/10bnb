@@ -4,15 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>10 BNB 收益换算器 💰</title>
+    <link rel="icon" type="image/png" href="10bnb.png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <!-- 标题区域 -->
         <header class="header">
+            <div class="logo-container">
+                <img src="10bnb.png" alt="10 BNB Logo" class="logo">
+            </div>
             <h1 class="title">💰 10 BNB 收益换算器 💰</h1>
             <div class="subtitle">16,275 RMB 能买什么？</div>
             <div class="meme-text">STONKS 📈</div>
+            
+            <!-- Meme CA 显示区域 -->
+            <div class="ca-container">
+                <div class="ca-label">CONTRACT ADDRESS:</div>
+                <div class="ca-address" id="caAddress">0000000000000000000000</div>
+                <button class="ca-copy-btn" onclick="copyCA()">COPY 📋</button>
+            </div>
         </header>
 
         <!-- 主要内容区域 -->
@@ -103,5 +114,40 @@
             <div class="footer-text">BNB = BIG NUMBER BAG 💰</div>
         </footer>
     </div>
+    
+    <script>
+        function copyCA() {
+            const caAddress = document.getElementById('caAddress').textContent;
+            const btn = document.querySelector('.ca-copy-btn');
+            navigator.clipboard.writeText(caAddress).then(() => {
+                const originalText = btn.textContent;
+                btn.textContent = 'COPIED! ✓';
+                btn.style.background = '#00FF00';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = '#FF6B00';
+                }, 2000);
+            }).catch(err => {
+                console.error('复制失败:', err);
+                // 降级方案：选中文本
+                const range = document.createRange();
+                range.selectNode(document.getElementById('caAddress'));
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                try {
+                    document.execCommand('copy');
+                    const originalText = btn.textContent;
+                    btn.textContent = 'COPIED! ✓';
+                    btn.style.background = '#00FF00';
+                    setTimeout(() => {
+                        btn.textContent = originalText;
+                        btn.style.background = '#FF6B00';
+                    }, 2000);
+                } catch (e) {
+                    alert('请手动复制地址');
+                }
+            });
+        }
+    </script>
 </body>
 </html>
